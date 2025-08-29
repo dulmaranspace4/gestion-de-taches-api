@@ -89,7 +89,7 @@
           "type": "boolean"
         }
       },
-      "required": ["title"]
+      "required": ["title", "completed"]
     }
   }
 }
