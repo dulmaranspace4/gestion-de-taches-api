@@ -35,8 +35,12 @@ app.get('/tasks/:id', async (req, res) => {
 
 app.post('/tasks', async (req, res) => {
   const task = new Task(req.body);
-  await task.save();
-  res.status(201).send(task);
+  try {
+    await task.save();
+    res.status(201).send(task);
+  } catch (error) {
+    res.status(400).send('Erreur lors de la création de la tâche');
+  }
 });
 
 app.put('/tasks/:id', async (req, res) => {
