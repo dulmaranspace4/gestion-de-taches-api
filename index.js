@@ -46,12 +46,14 @@ app.post('/tasks', async (req, res) => {
 });
 
 app.put('/tasks/:id', async (req, res) => {
+  // Update the task and return 404 if not found
   const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
   if (!task) return res.status(404).send('Tâche non trouvée');
   res.send(task);
 });
 
 app.delete('/tasks/:id', async (req, res) => {
+  // Remove the task and return 404 if not found
   const task = await Task.findByIdAndRemove(req.params.id);
   if (!task) return res.status(404).send('Tâche non trouvée');
   res.send(task);
