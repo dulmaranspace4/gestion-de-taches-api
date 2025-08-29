@@ -39,6 +39,8 @@ app.post('/tasks', async (req, res) => {
     await task.save();
     res.status(201).send(task);
   } catch (error) {
+    // Log error for debugging
+    console.error('Erreur lors de la création de la tâche', error);
     res.status(400).send('Erreur lors de la création de la tâche');
   }
 });
