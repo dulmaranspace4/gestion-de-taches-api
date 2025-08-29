@@ -1,0 +1,21 @@
+{
+  "name": "gestion-de-taches-api",
+  "version": "1.0.0",
+  "description": "Une API RESTful pour la gestion de tâches",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "swagger-ui-express": "^4.1.6",
+    "body-parser": "^1.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "author": "Votre Nom",
+  "license": "ISC"
+}
