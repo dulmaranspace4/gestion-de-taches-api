@@ -1,0 +1,95 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Gestion de Tâches API",
+    "description": "API pour gérer les tâches"
+  },
+  "basePath": "/",
+  "paths": {
+    "/tasks": {
+      "get": {
+        "summary": "Récupérer toutes les tâches",
+        "responses": {
+          "200": { "description": "Succès" }
+        }
+      },
+      "post": {
+        "summary": "Créer une nouvelle tâche",
+        "parameters": [{
+          "name": "task",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/Task"
+          }
+        }],
+        "responses": {
+          "201": { "description": "Tâche créée" }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "summary": "Récupérer une tâche spécifique",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": { "description": "Succès" },
+          "404": { "description": "Tâche non trouvée" }
+        }
+      },
+      "put": {
+        "summary": "Mettre à jour une tâche",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "task",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/Task"
+          }
+        }],
+        "responses": {
+          "200": { "description": "Tâche mise à jour" },
+          "404": { "description": "Tâche non trouvée" }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer une tâche",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": { "description": "Tâche supprimée" },
+          "404": { "description": "Tâche non trouvée" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Task": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      },
+      "required": ["title"]
+    }
+  }
+}
